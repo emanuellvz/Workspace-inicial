@@ -9,6 +9,65 @@
   font-weight: bold;
 }
 
+/*login--------------------------------------*/
+#login{
+ text-align: center;
+}
+/*Imágen*/
+#login-img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 27%;
+}
+/*Título*/
+#login h3{
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+/*Inputs*/
+#login input{
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/*Errores*/
+.error{
+  border-color: red;
+  color: red;
+}
+/*Botón*/
+#login button{
+  margin-top: 30px;
+  width: 120px;
+  height: 40px;
+  color: white;
+  background-color: #005ff7;
+  border: none;
+  border-radius: 5%;
+}
+
+#login button:hover{
+  border-style: solid;
+  border-color:#579aff;
+  background-color: #065be3;
+}
+/*Footer*/
+.texto-footer{
+  text-align: left;
+}
+/*Termina login----------------------*/
+
+/*Productos agregados a productos*/
+#encabezado{
+  margin: 2rem;
+}
+h1,p{
+  text-align: center;
+}
+/*Termina estilos agregados a productos*/
+
 nav a {
   text-decoration: none;
 }

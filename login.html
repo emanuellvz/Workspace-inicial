@@ -18,10 +18,16 @@
 
 <body>
   <main class="mt-5">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+    <div class="container" id="login">
+      <img src="img/login.png" id="login-img">
+      <h3>Inicio de sesión</h3>
+      <label>Email</label>
+      <input id="email" placeholder="Email">
+      <p id="error_email" class="error"></p>
+      <label>Contraseña</label>
+      <input id="contrasena" placeholder="Contraseña">
+      <p id="error_contrasena" class="error"></p>
+      <button id="ingresar">Ingresar</button>
     </div>
   </main>
   <footer class="text-muted">
@@ -29,9 +35,9 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
+      <p class="texto-footer">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
         2022</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+      <p class="texto-footer">Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
   <script src="js/login.js"></script>
