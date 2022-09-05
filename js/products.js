@@ -1,7 +1,9 @@
 //array donde se cargarán los datos recibidos:
-let categoriesArray = [];
+let productosArray = [];
 
-//Quito el contenido del div con la alerta
+let min=undefined;
+let max=undefined;
+//Selecciono container y encabezado
 container=document.getElementById("container");
 encabezado=document.getElementById("encabezado");
 
@@ -14,7 +16,12 @@ function traerProductos(array){
     <p>Verás aquí todos los productos de la categoría `+array.catName+`</p>`;
 
     for(let i = 0; i < array.products.length; i++){ 
+
+
         let category = array.products[i];
+
+        if((!(parseInt(category.cost)<min)) && (!(parseInt(category.cost)>max)))
+        {
         htmlContentToAppend += `
         
         <div class="list-group-item list-group-item-action">
@@ -36,6 +43,7 @@ function traerProductos(array){
         </div>
         `
         container.innerHTML = htmlContentToAppend;
+        }
     }
 }
 
@@ -44,16 +52,78 @@ function traerProductos(array){
 
 
 document.addEventListener("DOMContentLoaded", function (e) {
-
-
-    //Trae la informacion y la guarda en la variable productosArray
-    //Luego llamo a la funcion traer productos y muestro los productos
-    getJSONData(AUTOS_URL).then(function (productosObj) {
+    getJSONData(JSON_URL).then(function (productosObj) {
         if (productosObj.status === "ok") {
             productosArray = productosObj.data;
             //Muestro los productos que tengo
             traerProductos(productosArray);
-          
+
+            
         }
     });
+   
 });
+
+document.getElementById("filtrar").addEventListener("click", function(){
+  min=parseInt(document.getElementById("min").value);
+  max=parseInt(document.getElementById("max").value);
+  traerProductos(productosArray);
+})
+
+document.getElementById("limpiar").addEventListener("click",function(){
+ document.getElementById("min").value="";
+ document.getElementById("max").value="";
+ min=undefined;
+ max=undefined;
+ traerProductos(productosArray)  
+})
+
+console.log(productosArray);
+document.getElementById("min_button").addEventListener("click",function(){
+  console.log(productosArray.products);
+  productosArray.products.sort(function (a, b) {
+      if (a.cost > b.cost) {
+        return 1;
+      }
+      if (a.cost < b.cost) {
+        return -1;
+      }
+     
+      return 0;
+    });
+ traerProductos(productosArray)
+})
+
+document.getElementById("max_button").addEventListener("click",function(){
+  console.log(productosArray.products);
+  productosArray.products.sort(function (a, b) {
+      if (a.cost < b.cost) {
+        return 1;
+      }
+      if (a.cost > b.cost) {
+        return -1;
+      }
+     
+      return 0;
+    });
+ traerProductos(productosArray)
+})
+
+document.getElementById("rel_button").addEventListener("click",function(){
+  console.log(productosArray.products);
+  productosArray.products.sort(function (a, b) {
+      if (a.soldCount < b.soldCount) {
+        return 1;
+      }
+      if (a.soldCount > b.soldCount) {
+        return -1;
+      }
+     
+      return 0;
+    });
+ traerProductos(productosArray)
+})
+
+
+
+        
