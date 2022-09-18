@@ -24,7 +24,7 @@ function traerProductos(array){
         {
         htmlContentToAppend += `
         
-        <div class="list-group-item list-group-item-action">
+        <div onclick="setProductID(${category.id})"class="list-group-item list-group-item-action">
             <div class="row">
                 <div class="col-3">
                     <img src="` + category.image + `" alt="product image" class="img-thumbnail">
@@ -123,6 +123,14 @@ document.getElementById("rel_button").addEventListener("click",function(){
     });
  traerProductos(productosArray)
 })
+
+function setProductID(id) {
+  localStorage.setItem("productID", id);
+}
+container.addEventListener("click",function(){
+  window.location="product-info.html";
+})
+
 
 
 

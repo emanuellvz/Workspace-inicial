@@ -101,6 +101,69 @@ h1,p{
 #limpiar:hover{
   text-decoration: underline;
 }
+
+/*products_info*/
+
+/*contenedores*/
+.container_info{
+  padding-left: 8%;
+  padding-right: 5%;
+}
+
+/*encabezado*/
+#encabezado_info{
+  margin-top: 20px;
+}
+#encabezado_info h1{
+  text-align: left;
+  color:gray
+}
+
+/*contenedor main*/
+
+#container_info p{
+  text-align:left;
+}
+#imagenes img{
+width: 260px;
+margin-top: 20px;
+margin-right: 30px;
+margin-bottom: 20px;
+}
+
+/*comentarios*/
+#comentarios h1, #comentarios p {
+  text-align: left;
+}
+#comentarios div{
+  padding-left: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(128,128, 128, 0.5);
+}
+/*comentar*/
+
+#comentar{
+  margin-top: 20px;
+}
+#comentar h1{
+text-align: left;
+}
+
+#comentar p{
+  text-align: left;
+  }
+#comentar textarea{
+  width: 40%;
+  height: 100px;
+}
+
+#comentar select{
+  width: 10%;
+}
+.checked {
+  color: orange;
+}
 /*Termina estilos agregados a productos*/
 
 nav a {
