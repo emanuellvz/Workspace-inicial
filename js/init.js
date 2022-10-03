@@ -42,9 +42,29 @@ let getJSONData = function(url){
 }
 let usuarioNavBar=document.getElementsByClassName("nav-item");
 let usuario=extraerDelLocal("usuario");
-usuarioNavBar[3].innerHTML="<p class='nav-link'>"+ usuario +"</p>";
+usuarioNavBar[3].innerHTML= `<div class="dropdown col-2">
+<a class=" nav-link dropdown-toggle"  data-bs-toggle="dropdown" >`+usuario+`
+</a>
+<ul class="dropdown-menu">
+<li><a onclick="redirigirCarrito()" class="dropdown-item">Mi carrito </a></li>
+<li><a onclick="redirigirPerfil()" class="dropdown-item">Mi perfil </a></li>
+<li><a onclick="cerrarSesion()"class="dropdown-item">Cerrar sesión</a></li>
+</ul>`;
 
 function extraerDelLocal(nombre) {
   let a = localStorage.getItem(nombre)
   return JSON.parse(a)
+}
+
+function redirigirCarrito(){
+  window.location="cart.html"
+}
+
+function redirigirPerfil(){
+  window.location="my-profile.html"
+}
+
+function cerrarSesion(){
+  window.location="index.html";
+  localStorage.clear()
 }

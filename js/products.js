@@ -78,7 +78,6 @@ document.getElementById("limpiar").addEventListener("click",function(){
  traerProductos(productosArray)  
 })
 
-console.log(productosArray);
 document.getElementById("min_button").addEventListener("click",function(){
   console.log(productosArray.products);
   productosArray.products.sort(function (a, b) {

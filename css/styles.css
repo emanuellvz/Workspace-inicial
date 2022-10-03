@@ -131,6 +131,32 @@ margin-right: 30px;
 margin-bottom: 20px;
 }
 
+/*Productos relacionados*/
+
+
+#prod_relacionados img{
+  
+max-width: 100%;
+
+}
+
+#prod_relacionados div{
+  border-style: solid;
+  border-color: grey;
+  border-width: 1px;
+  margin-left: 50px;
+  padding-left:10px;
+  padding-top: 20px;
+
+}
+#prod_relacionados div:hover{
+  cursor:pointer
+}
+
+#prod_relacionados p{
+  display: inline-block;
+}
+
 /*comentarios*/
 #comentarios h1, #comentarios p {
   text-align: left;
@@ -163,6 +189,11 @@ text-align: left;
 }
 .checked {
   color: orange;
+}
+
+/*Barra de navegación*/
+.dropdown-item:active{
+  background-color:#6c757d;
 }
 /*Termina estilos agregados a productos*/
 
