@@ -195,6 +195,15 @@ text-align: left;
 .dropdown-item:active{
   background-color:#6c757d;
 }
+
+#carrito_hr{
+  height:2px;
+  opacity: 1;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+
 /*Termina estilos agregados a productos*/
 
 nav a {
