@@ -3,6 +3,9 @@ articulos=document.getElementById("articulos");
 formulario=document.getElementById("formulario");
 
 comprar=document.getElementById("comprar");
+costosSubtotal=document.getElementById("costos_subtotal");
+costosEnvio=document.getElementById("costos_envio");
+costosTotal=document.getElementById("costos_total");
 
 //Función para recorrer carrito
 function traerProductos(info){
@@ -44,8 +47,34 @@ document.addEventListener("DOMContentLoaded", function (e) {
             cantidad.addEventListener("click",function(){
                suma=carritoInfo.unitCost*cantidad.value
                subtotal.innerHTML=`<strong>USD ${suma}</strong>` 
-                    });       
-                
+                    }); 
+
+                    
+            //Selecciono input envio
+            envioSeleccionado=0;
+            inputsEnvio=document.querySelectorAll("input[name='envio']").forEach(function(input){
+                input.addEventListener("click",function(){
+                    if(input.checked){
+                    envioSeleccionado=input.value
+                    cargarCostos();
+                }
+                })
+            });
+
+            
+
+                    
+            //Cargo Costos
+
+            function cargarCostos(){
+            costosSubtotal.innerHTML="USD " + suma;
+            
+            costoEnvio=envioSeleccionado*suma/100;
+            costosEnvio.innerHTML="USD "+costoEnvio; 
+
+            costosTotal.innerHTML="USD "+ (costoEnvio+suma);
+            }
+            cargarCostos();     
         }
     })
 });
@@ -64,4 +93,19 @@ formulario.addEventListener("submit", event => {
         console.log(formulario);
     }
 })
+
+//Selecciono input forma de pago
+
+inputsPago=document.querySelectorAll("input[name='formaPago']").forEach(function(input){
+input.addEventListener("click",function(){
+    if(input.id=="tarjetaCredito"){
+        console.log(input.id)
+    } else{
+        console.log(input.id)
+    }
+})
+})
+
+
+
 
