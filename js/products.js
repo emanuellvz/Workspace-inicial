@@ -1,14 +1,75 @@
 //array donde se cargarán los datos recibidos:
 let productosArray = [];
-
-let min=undefined;
-let max=undefined;
 //Selecciono container y encabezado
 container=document.getElementById("container");
 encabezado=document.getElementById("encabezado");
 
 
+function filtrarProductos(array){
+  let htmlContentToAppend = "";
+  encabezado.innerHTML=`<h1>Productos</h1>
+  <p>Verás aquí todos los productos de la categoría `+array.catName+`</p>`;
 
+  for(let i = 0; i < array.products.length; i++){ 
+
+
+      let category = array.products[i];
+
+      if((!(parseInt(category.cost)<min)) && (!(parseInt(category.cost)>max)))
+      {
+      
+      htmlContentToAppend += `
+      
+      <div onclick="setProductID(${category.id})"class="list-group-item list-group-item-action">
+          <div class="row">
+              <div class="col-3">
+                  <img src="` + category.image + `" alt="product image" class="img-thumbnail">
+              </div>
+              <div class="col">
+                  <div class="d-flex w-100 justify-content-between">
+                      <div class="mb-1">
+                      <h4>`+ category.name+ " - "+ category.cost+ category.currency+ `</h4> 
+                      <p> `+ category.description +`</p> 
+                      </div>
+                      <small class="text-muted">` + category.soldCount + ` vendidos</small> 
+                  </div>
+
+              </div>
+          </div>
+      </div>
+      `
+      container.innerHTML = htmlContentToAppend;
+     // console.log(buscar)
+      }
+/*
+      else if (category.name==buscar){
+        
+         // console.log(buscar);
+        htmlContentToAppend += `
+        
+        <div onclick="setProductID(${category.id})"class="list-group-item list-group-item-action">
+            <div class="row">
+                <div class="col-3">
+                    <img src="` + category.image + `" alt="product image" class="img-thumbnail">
+                </div>
+                <div class="col">
+                    <div class="d-flex w-100 justify-content-between">
+                        <div class="mb-1">
+                        <h4>`+ category.name+ " - "+ category.cost+ category.currency+ `</h4> 
+                        <p> `+ category.description +`</p> 
+                        </div>
+                        <small class="text-muted">` + category.soldCount + ` vendidos</small> 
+                    </div>
+  
+                </div>
+            </div>
+        </div>
+        `
+        container.innerHTML = htmlContentToAppend;
+        
+      }*/
+  }
+}
 //función que recibe un array con los datos, y los muestra en pantalla a través el uso del DOM
 function traerProductos(array){
     let htmlContentToAppend = "";
@@ -16,12 +77,9 @@ function traerProductos(array){
     <p>Verás aquí todos los productos de la categoría `+array.catName+`</p>`;
 
     for(let i = 0; i < array.products.length; i++){ 
-
-
         let category = array.products[i];
-
-        if((!(parseInt(category.cost)<min)) && (!(parseInt(category.cost)>max)))
-        {
+      {
+       
         htmlContentToAppend += `
         
         <div onclick="setProductID(${category.id})"class="list-group-item list-group-item-action">
@@ -65,9 +123,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
 });
 
 document.getElementById("filtrar").addEventListener("click", function(){
+  buscar=document.getElementById("buscar").value;
+
   min=parseInt(document.getElementById("min").value);
   max=parseInt(document.getElementById("max").value);
-  traerProductos(productosArray);
+  filtrarProductos(productosArray);
+  //console.log(buscar);
 })
 
 document.getElementById("limpiar").addEventListener("click",function(){

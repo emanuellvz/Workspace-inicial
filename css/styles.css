@@ -203,6 +203,13 @@ text-align: left;
   margin-bottom: 10px;
 }
 
+/*Cart*/
+
+.caja{
+  border-style: solid;
+  border-color: #6c757d;
+  border-width: 1px;
+}
 
 /*Termina estilos agregados a productos*/
 

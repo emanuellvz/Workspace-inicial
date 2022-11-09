@@ -39,6 +39,7 @@
     <div class="container" id="container">
       <br>
       <!--Productos del carrito-->
+      
       <h1>Carrito De Compras</h1>
       <h2 style="Text-align:left">Artículos a Comprar</h2><br>
       <div class="row">
@@ -64,25 +65,113 @@
       <br>
 
       <!--Dirección de envío-->
+      <form id="formulario" action="#" method="get" class="needs-validation" novalidate>
       <h2>Dirección de Envío</h2>
       <div class="row">
         <span class="col-6">Calle</span>
         <span class="col-6">Número</span>
       </div>
       <div class="row" style="padding-left:10px">
-        <input id="calle" style="width:45%">
+        <input class="form-control" id="calle" style="width:45%" required>
         <span style="width:5.5%"></span>
-        <input id="numero" style="width:45%">
+        <input class="form-control" id="numero" style="width:45%" required>
       </div>
       <div class="row">
         <span class="col-12">Esquina</span>
       </div>
       <div class="row" style="padding-left:10px">
-        <input id="esquina" style="width:45%">
+        <input class="form-control" id="esquina" style="width:45%" required>
       </div>
       <br>
       <hr>
-    </div>
+
+      <h1  style="text-align:left">Costos</h1>
+
+      
+        <div class="row caja">
+        <div class="col-11"> <h2>Subtotal</h2></div> <div class="col-1">USD </div>
+        <div class="col-11">Costo unitario por Cantidad</div>
+      </div>
+      <div class="row caja">
+        <div class="col-11"><h2>Costo de Envío</h2></div><div class="col-1">USD </div>
+        <div class="col-8">Según el tipo de envío</div>
+      </div>
+      <div class="row caja">
+        <div class="col-11"><h2>Total ($)</h2></div> <div class="col-1">USD </div>
+      </div>
+      <br>
+    
+      <h1 style="text-align:left">Forma de pago</h1>
+
+      <div class="col-sm-12">
+        No se ha seleccionado
+        <button type="button" class="btn btn-link ps-0" data-bs-toggle="modal"
+          data-bs-target="#modalTerminos" required>  Seleccionar</button>
+      </div>
+
+      <div class="modal fade" id="modalTerminos" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5">Forma de pago</h1>
+              <hr>
+              
+            </div>
+            <div class="modal-body">
+              <input type="radio" name="formaPago" id="tarjetaCredito"><label for="tarjetaCredito">Tarjeta de crédito</label>
+              <hr>
+              <div class="row">
+                <div class="col-6">Número de Tarjeta</div><div class="col-4">Código de seg.</div>
+                
+                <div class="col-5">
+                <input class="form-control" id="numTarjeta" required></div><div class=col-1></div>
+                <div class="col-5">
+                  <input class="form-control" id="codSeg" required></div>
+                
+                  
+                <div class="col-10">Vencimiento(MM/AA)</div>
+                <div class="col-5">
+                <input class="form-control" id="vencimiento" required>
+              </div>
+              </div>
+
+              <br>
+              <input type="radio" name="formaPago" id="transferencia"><label for="transferencia">Transferencia bancaria</label>
+              <hr>
+
+              <div class="row">
+                <div class="col=10">Número de cuenta</div>
+                <div class="col-5">
+                <input class="form-control" id="numCuenta" required>
+              </div>
+              </div>
+              <hr>
+            </div>
+            <div class="row">
+              <div class="col-9"></div>
+              <div class="col-2">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Cerrar</button>
+           </div>
+          </div>
+          <br>
+          <br>
+        </div>
+      
+          
+      
+      </div>
+
+      
+      </div>
+
+      <br>
+      <div class="row">
+      <button type="submit" class="col- 12 btn btn-primary" id="comprar">Finalizar compra</button>
+        </div>
+      </form>
+
+      
+    </body>
 
 
   </main>
@@ -107,6 +196,6 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
-</body>
+
 
 </html>

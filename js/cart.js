@@ -1,5 +1,9 @@
 articulos=document.getElementById("articulos");
 
+formulario=document.getElementById("formulario");
+
+comprar=document.getElementById("comprar");
+
 //Función para recorrer carrito
 function traerProductos(info){
     let htmlContentToAppend = "";
@@ -46,4 +50,18 @@ document.addEventListener("DOMContentLoaded", function (e) {
     })
 });
 
+formulario.addEventListener("submit", event => {
+   
+    if ((!formulario.checkValidity())) {
+        event.preventDefault()
+        event.stopPropagation()
+        console.log("formulario no enviado")
+        formulario.classList.add("was-validated")
+        console.log(formulario);
+    } else{
+        formulario.classList.add("was-validated")
+        console.log("formulario enviado")
+        console.log(formulario);
+    }
+})
 
