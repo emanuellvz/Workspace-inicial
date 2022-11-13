@@ -6,6 +6,13 @@ comprar=document.getElementById("comprar");
 costosSubtotal=document.getElementById("costos_subtotal");
 costosEnvio=document.getElementById("costos_envio");
 costosTotal=document.getElementById("costos_total");
+numTarjeta=document.getElementById("numTarjeta");
+codSeg=document.getElementById("codSeg");
+vencimiento=document.getElementById("vencimiento");
+noSeleccionado=document.getElementById("noSeleccionado");
+numCuenta=document.getElementById("numCuenta");
+
+
 
 //Función para recorrer carrito
 function traerProductos(info){
@@ -42,11 +49,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
             cantidad.addEventListener("keyup",function(){
                 suma=carritoInfo.unitCost*cantidad.value
                 subtotal.innerHTML=`<strong>USD ${suma}</strong>` 
+                cargarCostos();
                 });
             //Escucha Evento click de input cantidad
             cantidad.addEventListener("click",function(){
                suma=carritoInfo.unitCost*cantidad.value
                subtotal.innerHTML=`<strong>USD ${suma}</strong>` 
+               cargarCostos();
                     }); 
 
                     
@@ -65,13 +74,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
                     
             //Cargo Costos
-
             function cargarCostos(){
             costosSubtotal.innerHTML="USD " + suma;
-            
             costoEnvio=envioSeleccionado*suma/100;
             costosEnvio.innerHTML="USD "+costoEnvio; 
-
             costosTotal.innerHTML="USD "+ (costoEnvio+suma);
             }
             cargarCostos();     
@@ -79,32 +85,59 @@ document.addEventListener("DOMContentLoaded", function (e) {
     })
 });
 
+//Envio de formulario
 formulario.addEventListener("submit", event => {
-   
     if ((!formulario.checkValidity())) {
         event.preventDefault()
         event.stopPropagation()
-        console.log("formulario no enviado")
         formulario.classList.add("was-validated")
-        console.log(formulario);
     } else{
         formulario.classList.add("was-validated")
-        console.log("formulario enviado")
-        console.log(formulario);
+        event.preventDefault()
+        event.stopPropagation()
+        document.getElementById("mensaje").innerHTML=`<div class="alert alert-success" role="alert">
+        ¡Has comprado con éxito!
+      </div>`;
     }
 })
 
 //Selecciono input forma de pago
-
-inputsPago=document.querySelectorAll("input[name='formaPago']").forEach(function(input){
+document.querySelectorAll("input[name='formaPago']").forEach(function(input){
 input.addEventListener("click",function(){
     if(input.id=="tarjetaCredito"){
-        console.log(input.id)
+        numCuenta.required=false;
+        numCuenta.disabled=true;
+
+        numTarjeta.disabled=false;
+        codSeg.disabled=false;
+        vencimiento.disabled=false;
+
+        numTarjeta.required=true;
+        codSeg.required=true;
+        vencimiento.required=true
+        
     } else{
-        console.log(input.id)
+        numTarjeta.required=false;
+        codSeg.required=false;
+        vencimiento.required=false;
+
+        numTarjeta.disabled=true;
+        codSeg.disabled=true;
+        vencimiento.disabled=true;
+
+        numCuenta.disabled=false;
+        numCuenta.required=true;
+        
     }
 })
 })
+
+document.getElementById("modalCerrar").addEventListener("click", function(){
+if ((numTarjeta.value!=""& codSeg.value!="" & vencimiento.value!="")|| numCuenta.value!=""){
+    noSeleccionado.innerHTML="";
+}
+});
+
 
 
 

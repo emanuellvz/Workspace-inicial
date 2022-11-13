@@ -54,8 +54,9 @@
       <div id="articulos"></div>
 
       <!--Tipo de envío-->
+      <form id="formulario" action="#" method="get" class="needs-validation" novalidate>
       <h2>Tipo de Envío</h2>
-      <input class="form-check-input" type="radio" name="envio" id="premium" value="15"><label for="premium">&nbsp Premium 2 a 5
+      <input class="form-check-input" type="radio" name="envio" id="premium" value="15" required><label for="premium">&nbsp Premium 2 a 5
         días (15%)</label><br>
       <input class="form-check-input" type="radio" name="envio" id="express" value="7"><label for="express">&nbsp Express 5 a 8
         días (7%)</label><br>
@@ -65,7 +66,7 @@
       <br>
 
       <!--Dirección de envío-->
-      <form id="formulario" action="#" method="get" class="needs-validation" novalidate>
+      
       <h2>Dirección de Envío</h2>
       <div class="row">
         <span class="col-6">Calle</span>
@@ -75,12 +76,16 @@
         <input class="form-control" id="calle" style="width:45%" required>
         <span style="width:5.5%"></span>
         <input class="form-control" id="numero" style="width:45%" required>
+        <div class="invalid-feedback" style="width:45%; padding-left: 0px">Debes ingresar una calle</div>
+        <span style="width:5.5%"></span>
+        <div class="invalid-feedback" style="width:45%; padding-left: 0px">Debes ingresar un número</div>
       </div>
       <div class="row">
         <span class="col-12">Esquina</span>
       </div>
       <div class="row" style="padding-left:10px">
-        <input class="form-control" id="esquina" style="width:45%" required>
+        <input class="form-control" id="esquina" style="width:45%" required><span style="width:55%"></span>
+        <div class="invalid-feedback" style="width:45%; padding-left: 0px">Debes ingresar una esquina</div>
       </div>
       <br>
       <hr>
@@ -103,11 +108,12 @@
     
       <h1 style="text-align:left">Forma de pago</h1>
 
-      <div class="col-sm-12">
-        No se ha seleccionado
+      <div class="col-sm-12"><span id="noSeleccionado">
+        No se ha seleccionado</span>
         <button type="button" class="btn btn-link ps-0" data-bs-toggle="modal"
           data-bs-target="#modalTerminos" required>  Seleccionar</button>
       </div>
+    
 
       <div class="modal fade" id="modalTerminos" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
@@ -150,7 +156,7 @@
             <div class="row">
               <div class="col-9"></div>
               <div class="col-2">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Cerrar</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="modalCerrar" >Cerrar</button>
            </div>
           </div>
           <br>
@@ -168,8 +174,10 @@
       <div class="row">
       <button type="submit" class="col- 12 btn btn-primary" id="comprar">Finalizar compra</button>
         </div>
+        
       </form>
 
+      <div id="mensaje"></div>
       
     </body>
 
