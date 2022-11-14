@@ -36,7 +36,6 @@ boton=document.getElementById("ingresar").addEventListener("click",function(){
     window.location="inicio.html";
     
    }
-
 })
 function agregarAlLocal(nombre, objeto) {
    let a = JSON.stringify(objeto)
